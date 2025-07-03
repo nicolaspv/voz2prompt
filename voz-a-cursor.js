@@ -63,7 +63,7 @@ function recordAudio(filename) {
     process.stdin.resume();
     process.stdin.setEncoding('utf8');
 
-    console.log('Recording... Press ESC to finish.');
+    console.log('�� Recording... Press ESC to finish.');
 
     function onKeyPress(key) {
       if (key === '\u001b') { // ESC key
@@ -135,28 +135,28 @@ function stripOuterQuotes(text) {
 
 (async () => {
   if (!OPENAI_API_KEY) {
-    console.error('Error: OPENAI_API_KEY not set. Please set it in .env.local or your environment.');
+    console.error('⚠️  Error: OPENAI_API_KEY not set. Please set it in .env.local or your environment.');
     process.exit(1);
   }
 
   const audioFile = 'audio.wav';
   await recordAudio(audioFile);
-  console.log('Transcribing...');
+  console.log('📝 Transcribing...');
   const inputText = await transcribeAudio(audioFile, argv.lang);
-  console.log('Input:', inputText);
+  console.log('🇪🇸🌍 Input:', inputText);
 
   const systemPrompt = argv.prompt || defaultSystemPrompt;
-  console.log('Translating to English prompt...');
+  console.log('🔄 Translating to English prompt...');
   const englishPrompt = await translateToPrompt(inputText, systemPrompt);
   const cleanPrompt = stripOuterQuotes(englishPrompt);
-  console.log('English prompt:', cleanPrompt);
+  console.log('🇬🇧🌍 English prompt:', cleanPrompt);
 
   if (argv.clipboard) {
     clipboardy.writeSync(cleanPrompt);
-    console.log('Prompt copied to clipboard!');
+    console.log('📋 Prompt copied to clipboard!');
   }
   if (argv.output) {
     fs.writeFileSync(argv.output, cleanPrompt, 'utf8');
-    console.log(`Prompt written to ${argv.output}`);
+    console.log(`💾 Prompt written to ${argv.output}`);
   }
 })();
