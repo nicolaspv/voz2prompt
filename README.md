@@ -52,6 +52,14 @@ voz2prompt --no-clipboard
 voz2prompt --prompt "You are a helpful assistant for code translation."
 ```
 
+## .env.local Example
+
+Create a `.env.local` file in your project root with your OpenAI API key:
+
+```
+OPENAI_API_KEY=sk-...your-openai-key...
+```
+
 ## Requirements
 - Node.js 18+
 - SoX (Sound eXchange) installed and in your PATH
