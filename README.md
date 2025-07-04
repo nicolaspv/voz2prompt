@@ -14,6 +14,8 @@ A CLI tool to record your voice (in Spanish or any language), transcribe it, and
 ### Local (in your project)
 ```
 yarn install
+# or
+npm install
 ```
 
 ### Global (recommended)
